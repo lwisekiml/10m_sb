@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Profile("dev")
-public class HelloController {
+@Profile("production")
+public class ProductionHelloController {
 	
 	@Value("${hello.message}") // application.properties에 있는 값
 	private String helloMessage;
@@ -28,7 +28,7 @@ public class HelloController {
 	
 	@GetMapping("/hello")
 	public String getHello() {
-		return "[HelloController]" + helloMessage + "\n" + hello + "\n" + helloee + countries;
+		return "[ProductionHelloController]" + helloMessage + "\n" + hello + "\n" + helloee + countries;
 	}
 	
 //	@GetMapping("/country")
