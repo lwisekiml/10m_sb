@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "hello.message",
+  "type": "java.lang.String",
+  "description": "이것은 헬로 메시지입니다."
+}]}
