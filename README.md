@@ -24,4 +24,11 @@
 
 	java -jar AWS_Elastic_Beanstalk-1-0.0.1-SNAPSHOT.jar --spring.profiles.active=production
 
+5.
+
+
+6. https://www.youtube.com/watch?v=WZDth-5KP5M&list=PLvdZg8T1CFZuMZh5PzNUAhDprr0ksjkNp&index=6
+
+	스프링부트 + JPA + H2 데이터베이스
+
 
