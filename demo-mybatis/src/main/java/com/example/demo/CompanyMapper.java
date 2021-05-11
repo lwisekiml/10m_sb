@@ -3,6 +3,7 @@ package com.example.demo;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
@@ -22,7 +23,9 @@ public interface CompanyMapper {
 	// @Result는 company_name을 name으로 매칭
 	@Results(id="CompanyMap", value= {
 		@Result(property = "name", column = "company_name"),
-		@Result(property = "address", column = "company_address")
+		@Result(property = "address", column = "company_address"),
+		@Result(property = "employeeList", column = "id", many = @Many(select = "com.example.demo.EmployeeMapper.getByCompanyId"))
+		/* http://localhost:8080/company/ 과 http://localhost:8080/company/11 같이 확인 */
 	})
 	List<Company> getAll();
 	

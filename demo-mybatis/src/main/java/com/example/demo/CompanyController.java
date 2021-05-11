@@ -31,15 +31,15 @@ public class CompanyController {
 		return company; // 전체 정보 반환
 	}
 	
-//	@GetMapping("")
-//	public List<Company> getAll() {
-//		return companyMapper.getAll();
-//	}
-
 	@GetMapping("")
 	public List<Company> getAll() {
-		return companyService.getAll();
+		return companyMapper.getAll();
 	}
+
+//	@GetMapping("")
+//	public List<Company> getAll() {
+//		return companyService.getAll();
+//	}
 
 	@GetMapping("/{id}")
 	public Company getById(@PathVariable("id") int id) {
