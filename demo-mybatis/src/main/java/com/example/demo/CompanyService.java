@@ -27,8 +27,9 @@ public class CompanyService {
 		return companyList;
 	}
 	
-	@Transactional // runtime exception 발생시 롤백(@Transactional이 없으면 롭백안되고 적용됨)
-	public Company add(Company company) {
+//	@Transactional // runtime exception 발생시 롤백(@Transactional이 없으면 롭백안되고 적용됨)
+	@Transactional(rollbackFor = Exception.class) // Exception 을 상속받은 모든 것
+	public Company add(Company company) throws Exception {
 		companyMapper.insert(company);
 		// add company into legacy system
 		if (true) {

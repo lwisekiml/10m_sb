@@ -26,7 +26,7 @@ public class CompanyController {
 //	}
 
 	@PostMapping
-	public Company post(@RequestBody Company company) { // RequestBody로 해서 postman에서 JSON으로 전송을 해야함
+	public Company post(@RequestBody Company company) throws Exception { // RequestBody로 해서 postman에서 JSON으로 전송을 해야함
 //		companyMapper.insert(company);
 		companyService.add(company);
 		return company; // 전체 정보 반환
