@@ -17,3 +17,5 @@ create table company (
 )
 
 select * from company;
+
+delete from company;

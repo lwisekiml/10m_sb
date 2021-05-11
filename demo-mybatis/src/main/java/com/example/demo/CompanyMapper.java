@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
@@ -19,9 +20,13 @@ public interface CompanyMapper {
 	
 	@Select("SELECT * FROM company")
 	// @Result는 company_name을 name으로 매칭
-	@Results({
+	@Results(id="CompanyMap", value= {
 		@Result(property = "name", column = "company_name"),
 		@Result(property = "address", column = "company_address")
 	})
 	List<Company> getAll();
+	
+	@Select("SELECT * FROM company WHERE id=#{id}")
+	@ResultMap("CompanyMap")
+	Company getById(@Param("id") int id);
 }
