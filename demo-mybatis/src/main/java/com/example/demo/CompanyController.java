@@ -17,6 +17,9 @@ public class CompanyController {
 	@Autowired
 	private CompanyMapper companyMapper;
 	
+	@Autowired
+	private CompanyService companyService;
+	
 //	@PostMapping
 //	public int post(@RequestBody Company company) { // RequestBody로 해서 postman에서 JSON으로 전송을 해야함
 //		return companyMapper.insert(company); // 입력 성공 : 1, 실패 : 0
@@ -28,9 +31,14 @@ public class CompanyController {
 		return company; // 전체 정보 반환
 	}
 	
+//	@GetMapping("")
+//	public List<Company> getAll() {
+//		return companyMapper.getAll();
+//	}
+
 	@GetMapping("")
 	public List<Company> getAll() {
-		return companyMapper.getAll();
+		return companyService.getAll();
 	}
 
 	@GetMapping("/{id}")
