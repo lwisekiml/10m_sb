@@ -19,3 +19,20 @@ create table company (
 select * from company;
 
 delete from company;
+
+--------------------------------------------------------------------------
+create table employee (
+	id INTEGER auto_increment primary key,
+	company_id INTEGER,
+	employee_name VARCHAR(128),
+	employee_address VARCHAR(128),
+	index (employee_name),
+	foreign key (company_id) references company(id)
+)
+
+select * from employee;
+
+delete from employee;
+
+-- company에 있는 id값의 숫자를 company_id에 넣어야 함
+INSERT INTO employee(company_id, employee_name, employee_address) values(8, '홍길순', '서울시 강남구 대치2동')
