@@ -2,8 +2,11 @@ package com.example.demo;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CompanyService {
@@ -22,5 +25,15 @@ public class CompanyService {
 			}
 		}
 		return companyList;
+	}
+	
+	@Transactional // runtime exception 발생시 롤백(@Transactional이 없으면 롭백안되고 적용됨)
+	public Company add(Company company) {
+		companyMapper.insert(company);
+		// add company into legacy system
+		if (true) {
+			throw new RuntimeException("Legacy Exception");
+		}
+		return company;
 	}
 }
