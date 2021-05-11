@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +16,19 @@ public class CompanyController {
 	@Autowired
 	private CompanyMapper companyMapper;
 	
+//	@PostMapping
+//	public int post(@RequestBody Company company) { // RequestBody로 해서 postman에서 JSON으로 전송을 해야함
+//		return companyMapper.insert(company); // 입력 성공 : 1, 실패 : 0
+//	}
+
 	@PostMapping
-	public int post(@RequestBody Company company) { // RequestBody로 해서 postman에서 JSON으로 전송을 해야함
-		return companyMapper.insert(company);
+	public Company post(@RequestBody Company company) { // RequestBody로 해서 postman에서 JSON으로 전송을 해야함
+		companyMapper.insert(company);
+		return company; // 전체 정보 반환
+	}
+	
+	@GetMapping("")
+	public List<Company> getAll() {
+		return companyMapper.getAll();
 	}
 }

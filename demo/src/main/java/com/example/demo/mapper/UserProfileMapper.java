@@ -14,7 +14,7 @@ public interface UserProfileMapper {
 	@Select("SELECT * FROM userprofile WHERE id=#{id}")
 	UserProfile getUserProfile(@Param("id") String id); 
 	
-	@Select("SELECT *FROM userprofile")
+	@Select("SELECT * FROM userprofile")
 	List<UserProfile> getUserProfileList();
 	
 	@Update("UPDATE userprofile SET name=#{name}, phone=#{phone}, address=#{address} WHERE id=#{id}")
